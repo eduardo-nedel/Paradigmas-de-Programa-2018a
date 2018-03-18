@@ -1,11 +1,11 @@
-import Data.Char
-
 --               _________________________________
 --              |---------------------------------|
 --              |------Eduardo Mueller Nedel------|
 --              |----------ELC117-2018a-----------|
 --              |---------------------------------|
 
+
+import Data.Char
 
 -- 1. Crie uma função isVowel :: Char -> Bool que verifique se um caracter é uma vogal ou não.
 isVowel :: Char -> Bool
@@ -89,7 +89,6 @@ valorVogal2 c
   | (toLower c) == 'o' = "0"
   | (toLower c) == 'u' = "00"
   | otherwise = [c]
-
 
 betterEncodeName :: String -> String
 betterEncodeName str = concatMap (\x -> valorVogal2 x) str
