@@ -1,1 +1,0 @@
-# Paradigmas-de-Programa-2018a
