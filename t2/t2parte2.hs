@@ -34,3 +34,20 @@ auxBin2Dec bits tam = (head bits)*(2^tam) + auxBin2Dec (tail bits) (tam-1)
 -- para a função (por exemplo, bin2dec').
 
 -- bin2dec' :: [Int] -> Int
+
+-- 5 Crie uma função recursiva dec2bin :: Int -> [Int] que receba um número inteiro positivo e retorne sua representação em 
+-- binário, sob forma de uma lista de 0's e 1's. As funções auxiliares autorizadas aqui são mod, div e reverse. 
+auxDec2bin :: Int -> [Int]
+auxDec2bin 0 = []
+auxDec2bin int = (int`mod`2) : auxDec2bin (int`div`2)
+
+dec2bin :: Int -> [Int]
+dec2bin int = reverse (auxDec2bin int)
+
+-- 6 Implemente uma dessas funções: isHex :: String -> Bool ou hex2dec :: String -> Int ou dec2hex :: Int -> String, que são 
+-- semelhantes às dos exercícios anteriores, porém com números hexadecimais no lugar de números binários. Aqui está tudo 
+-- liberado: você pode escolher qual das funções irá implementar, sem restrições sobre como deve fazer isso
+
+isHex :: String -> Bool
+isHex str = notElem False (map (\n -> elem n "0123456789ABCDEF") str)
+
