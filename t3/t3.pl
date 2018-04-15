@@ -12,7 +12,7 @@ hasN(L, N) :- length(L, A), A =:= N.
 
 % 4. Defina um predicado potN0(N,L), de forma que L seja uma lista de potências de 2, com expoentes de N a 0.
 
-potN0(-1, []).
+potN0(0, [1]).
 potN0(N, L) :-
     L = [H|T],
     X is N-1,
@@ -33,6 +33,12 @@ zipmult(L1, L2, L3) :-
 /* 6. Defina um predicado potencias(N,L), de forma que L seja uma lista com as N primeiras potências de 2, 
 sendo a primeira 2^0 e assim por diante.. */
 
+potencias(0, []).
 potencias(N,L) :- 
+    potN0(N-1, AUX),
+    reverse(AUX, L).
+
+
+
     
 
