@@ -22,7 +22,7 @@ potN0(N, L) :-
 /* 5. Defina um predicado zipmult(L1,L2,L3), de forma que cada elemento da lista L3 seja o produto dos elementos 
 de L1 e L2 na mesma posição do elemento de L3. */
 
-zipmult([], _, []).
+zipmult([], [_], []).
 zipmult(L1, L2, L3) :-
     L1 = [H1|T1],
     L2 = [H2|T2],
@@ -61,4 +61,33 @@ mesmaPosicao(A,L1,L2) :-
     L2 = [_|T2],
     mesmaPosicao(A, T1, T2).
     
+/* 9. Dada uma lista de N alunos, deseja-se escolher NP alunos (NP < N) para formar uma comissão. Para isso, defina um 
+predicado comissao(NP,LP,C), que permita gerar as possíveis combinações C com NP elementos da lista LP. */
+
+comissao(0, _, []).
+comissao(NP, LP, C) :-
+    NP > 0,
+    NN is NP - 1,
+    C = [V|R],
+    auxiliar(V, LP, LIST),
+    comissao(NN, LIST, R).
+
+auxiliar(H,[H|L],L).
+auxiliar(H,[_|L],R) :- 
+    auxiliar(H,L,R).
+
+/* 10. (Adaptado de OBI2006-F1N1) Tem-se N azulejos 10cm x 10cm e, com eles, deve-se montar um conjunto de quadrados de 
+modo a utilizar todos os azulejos dados, sem sobrepô-los. Inicialmente, deve-se montar o maior quadrado possível; 
+então, com os azulejos que sobraram, deve-se montar o maior quadrado possível, e assim sucessivamente. Por exemplo, 
+se forem dados 31 azulejos, o conjunto montado terá 4 quadrados. Para resolver este problema, você deverá definir um 
+predicado azulejos(NA, NQ), de forma que NQ seja o número de quadrados que se deve montar com NA azulejos. Dica: use 
+os predicados sqrt e floor, pré-definidos em Prolog. */
+
+azulejos(0,0) :- !.
+azulejos(NA, NQ) :-
+    NA >= 0,
+    X is floor(sqrt(NA)),
+    Y is NA - X*X,
+    azulejos(Y, T),
+    NQ is T + 1.
 
