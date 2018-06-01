@@ -59,6 +59,7 @@ public class Grafo {
         return null;
     }
 
+    // Retorna o numero de intercecoes entre as arestas
     public int getIntercecoes() {
         int contador = 0;
         for (Aresta a:arestas) {

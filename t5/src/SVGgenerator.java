@@ -17,24 +17,29 @@ public class SVGgenerator {
                 (int)( c.getBlue() * 255 ) );
     }
 
+    // Retorna uma string contendo o os headders de um arquivo SVG baseando-se na altura e largura recebida
     public static String generateStart(double width, double height) {
         return "<html>\n<body>\n\n<svg width=\" " + width + " \" height=\"" + height + "\">";
     }
 
+    // Retorna uma string com o fechamento dos headders
     public static String generateEnd() {
         return "</svg>\n\n</body>\n</html>";
     }
 
+    // Retorna uma string que contem o SVG de um Circulo
     public static String generateCircle(Circle c) {
         return "<circle cx=\"" + c.getCenterX() + "\" cy=\"" + c.getCenterY() + "\" r=\"" + c.getRadius()
                 + "\" stroke=\"" + generateColor(c.getStroke()) + "\" stroke-width=\"" + c.getStrokeWidth() + "\" fill=\"" + generateColor(c.getFill()) + "\" />";
     }
 
+    // Retorna uma string que contem o SVG de uma Linha
     public static String generateLine(Line l) {
         return "<line x1=\" " + l.getStartX() + "\" y1=\" " + l.getStartY() + " \" x2=\" " + l.getEndX() + " \" y2=\" " + l.getEndY() +
                 " \" style=\"stroke:" + generateColor(l.getStroke()) + ";stroke-width:" + l.getStrokeWidth() + "\" />";
     }
 
+    // Retorna uma string que e um arquivo SVG completo em relacao ao grafo desenhado
     public static String getSVG(Grafo grafo, double width, double height) {
         String resultado = generateStart(width, height);
         LinkedList<Aresta> arestas = grafo.getArestas();

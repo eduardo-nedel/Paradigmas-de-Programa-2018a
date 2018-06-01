@@ -19,15 +19,12 @@ public class Vertice {
         return represetancao;
     }
 
-    public LinkedList<Aresta> getLigacoes() {
-        return ligacoes;
-    }
-
     // Adiciona uma ligacao
     void addLigacoes(Aresta e) {
         ligacoes.add(e);
     }
 
+    // Descobre se dois vertices ja estao ligados por uma aresta
     boolean jaLigados(Vertice v) {
         for (Aresta a: ligacoes) {
             if (a.getDestino() == v || a.getOrigem() == v) {

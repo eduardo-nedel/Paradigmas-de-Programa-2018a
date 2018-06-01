@@ -51,7 +51,7 @@ public class Editor_de_Grafos extends Application {
         personalizacao.setOrientation(Orientation.VERTICAL);
         Pane area_de_desenho = new Pane();
 
-        // Contadores
+        // Secao dos Contadores
         Label contVertice = new Label( ' ' + "Vertices: " + grafo.getContadorVertices() + ' ');
         Label contArestas = new Label("Arestas: " + grafo.getContadorArestas() + ' ');
         Label contArestaSobreposta = new Label("Arestas Sobrepostas: " +  grafo.getIntercecoes() + ' ');
@@ -100,7 +100,7 @@ public class Editor_de_Grafos extends Application {
         menu.getChildren().addAll(menuBar);
 
 
-        // Personalizacao
+        // Secao de Personalizacao
         final ToggleGroup figura = new ToggleGroup();
         ToggleButton aresta = new ToggleButton("Aresta");
         ToggleButton vertice = new ToggleButton("Vértice");
@@ -147,9 +147,13 @@ public class Editor_de_Grafos extends Application {
         personalizacao.getItems().addAll(vertice, corVertice, seletorCorV, corBorda,
                 seletorCorB, raio, seletorTamanhoV, new Separator(), aresta, corLinha, seletorCorA, grossura, seletorTamanhoA);
 
+
+        // Desenhar
         area_de_desenho.setOnMousePressed(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent e) {
+                // Desenha Vertice
                 if(figura.getSelectedToggle() == vertice) {
+                    // Desenha apenas se não tiver um vertice proximo
                     if (grafo.foraVertice(e.getX(), e.getY(), seletorTamanhoV.getValue())) {
                         grafo.addVertice(e.getX(), e.getY(), seletorTamanhoV.getValue(), seletorCorV.getValue(), seletorCorB.getValue());
                         area_de_desenho.getChildren().add(grafo.getLastVertice().getRepresetancao());
@@ -157,6 +161,7 @@ public class Editor_de_Grafos extends Application {
                     }
                 }
                 else {
+                    // Desenha Aresta
                     // Verifica se um ponto está dentro de um vértice
                     if(!grafo.foraVertice(e.getX(), e.getY(), 0)) {
                         inicio_linha = grafo.getVerticeMouse(e.getX(), e.getY());
@@ -170,6 +175,7 @@ public class Editor_de_Grafos extends Application {
             }
         });
 
+        // Desenha a aresta enquanto o mouse estiver pressionado
         area_de_desenho.setOnMouseDragged(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent e) {
                 if (figura.getSelectedToggle() == aresta && tracandoLinha) {
@@ -179,6 +185,7 @@ public class Editor_de_Grafos extends Application {
             }
         });
 
+        // Cria a Aresta caso o mouse seja solto em cima de um vertice, caso contrario, remove a mesma
         area_de_desenho.setOnMouseReleased(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent e) {
                 if (figura.getSelectedToggle() == aresta && tracandoLinha) {

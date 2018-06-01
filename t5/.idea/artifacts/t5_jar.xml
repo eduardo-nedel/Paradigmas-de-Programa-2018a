@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="t5:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/t5_jar</output-path>
+    <root id="archive" name="t5.jar">
+      <element id="module-output" name="t5" />
+    </root>
+  </artifact>
+</component>
