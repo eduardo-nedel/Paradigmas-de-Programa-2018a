@@ -1,0 +1,10 @@
+Usando o IntelliJ IDEA:
+    1º -> Abra o projeto utilizando o ItelliJ IDEA;
+    2º -> Pressione ctrl + alt + shift + s;
+    3º -> Selecione Artifacts no menu lateral esquerdo;
+    4º -> Clique no sinal de mais, aponte em JAR e selecione From modules with dependencies;
+    5º -> Em Main Class, selecione Editor_de_Grafos;
+    6º -> Pressione OK;
+    7º -> No meu superior, selecione Build, Build Artifacts, na nova janelinha que aparecer, clique em Build;
+    8º -> Va ate a pasta do programa, entre em out, artifacts, t6_jar;
+    9º -> Pronto, ali esta o .jar do programa.
