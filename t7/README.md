@@ -1,4 +1,4 @@
-#**Usando o IntelliJ IDEA:**
+<h1>**Usando o IntelliJ IDEA:**</h1>
     1. -> Abra o projeto utilizando o ItelliJ IDEA;
     2. -> Pressione ctrl + alt + shift + s;
     3. -> Selecione Artifacts no menu lateral esquerdo;
